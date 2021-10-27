@@ -6,7 +6,7 @@ import Message from "./components/message";
 import Overlay from "./components/overlay";
 import "./index.module.css";
 
-const App = () => (
+export const MainView = () => (
   <div styleName="window" className="h-auto">
     {/* <Toolbar /> */}
     <div styleName="content">
@@ -17,5 +17,3 @@ const App = () => (
     </div>
   </div>
 );
-
-export default App;
