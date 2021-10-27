@@ -1,4 +1,10 @@
-const App = require('./src/app');
+import { env } from './src/config/config';
+import  {App}  from './src/app';
 
-const app = new App();
-app.initServer(process.env.APP_PORT);
+// const App = require('./src/app');
+
+const envVariables = env();
+
+
+const app = new App(envVariables);
+app.initServer(envVariables.app.port);
