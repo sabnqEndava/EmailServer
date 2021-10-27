@@ -2,7 +2,7 @@
   "name": "email-server-back",
   "version": "1.0.0",
   "description": "Demo package for NodeJS workshop",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon",
@@ -20,6 +20,11 @@
     "ts-node": "^10.4.0"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.3",
+    "mongoose": "^6.0.12",
+    "typescript": "^4.4.4"
   }
 }
