@@ -28,14 +28,14 @@ class Overlay extends Component {
 }
 
 export default connect(
-  state => {
+  (state) => {
     return {
-      overlayIsOpen: state.overlay
+      overlayIsOpen: state.overlay,
     };
   },
-  dispatch => {
+  (dispatch) => {
     return {
-      closeOverlay: () => dispatch({ type: "CLOSE_OVERLAY" })
+      closeOverlay: () => dispatch({ type: "CLOSE_OVERLAY" }),
     };
   }
 )(Overlay);

@@ -1,9 +1,9 @@
 import React from "react";
-import Toolbar from "../toolbar";
-import Sidebar from "../sidebar";
-import Inbox from "../inbox";
-import Message from "../message";
-import Overlay from "../overlay";
+import Toolbar from "./components/toolbar";
+import Sidebar from "./components/sidebar";
+import Inbox from "./components/inbox";
+import Message from "./components/message";
+import Overlay from "./components/overlay";
 import "./index.module.css";
 
 const App = () => (
