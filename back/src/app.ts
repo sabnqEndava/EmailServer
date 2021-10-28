@@ -2,7 +2,7 @@ import express from 'express';
 import { Env } from './config/config'
 const { connect }  = require('./db')
 const cors = require("cors");
-const { testInsert, testGet } = require('./controllers/users');
+const { testInsert, testGet, testPostEmail } = require('./controllers/users');
 
 const app = express();
 
@@ -30,6 +30,7 @@ export class App {
   routes(){
     app.get("/", testInsert);
     app.get('/users', testGet)
+    app.get('/user', testPostEmail)
   }
 }
 

@@ -1,6 +1,6 @@
 
 const mongoose2 = require('mongoose')
-const Emails = require("./email")
+import { EmailSchema } from "./email";
 const UserSchema = new mongoose2.Schema({
     name: {
         type:String,
@@ -10,10 +10,7 @@ const UserSchema = new mongoose2.Schema({
         type:String,
         required:true
     },
-    // received_emails:{
-    //     ref: Emails,
-    //     default: []
-    // }
+    received_mails: [EmailSchema]
 })
 
 const User = mongoose2.model("User", UserSchema);
