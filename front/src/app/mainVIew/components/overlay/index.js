@@ -1,23 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./index.module.css";
+import styles from "./index.module.css";
 
 class Overlay extends Component {
   render() {
     return (
-      <div styleName={this.props.overlayIsOpen ? "overlay-active" : "overlay"}>
-        <div styleName="modal">
-          <div styleName="title">
+      <div
+        styleName={
+          this.props.overlayIsOpen
+            ? `${styles.overlayActive}`
+            : `${styles.overlay}`
+        }
+      >
+        <div className={styles.modal}>
+          <div className={styles.title}>
             New message
-            <span styleName="close" onClick={this.props.closeOverlay} />
+            <span className={styles.close} onClick={this.props.closeOverlay} />
           </div>
-          <div styleName="body">
-            <form styleName="form">
+          <div className={styles.body}>
+            <form className={styles.form}>
               <input type="text" placeholder="To" />
               <input type="text" placeholder="Subject" />
               <textarea name="message" rows="5" placeholder="Your text" />
-              <div styleName="button">
-                <button styleName="btnVal">Send</button>
+              <div className={styles.button}>
+                <button className={styles.btnVal}>Send</button>
               </div>
             </form>
           </div>

@@ -1,41 +1,44 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./index.module.css";
+import styles from "./index.module.css";
 
 class Sidebar extends Component {
   render() {
     return (
-      <aside styleName="sidebar">
+      <aside className={styles.sidebar}>
         <nav>
-          <button styleName="compose" onClick={this.props.openOverlay}>
+          <button className={styles.compose} onClick={this.props.openOverlay}>
             <FontAwesomeIcon icon="pencil-alt" />
           </button>
-          <ul styleName="categories">
+          <ul className={styles.categories}>
             <li>
-              <div styleName="notification">
+              <div className={styles.notification}>
                 <span>5</span>
               </div>
-              <FontAwesomeIcon icon="inbox" styleName="icon icon-is-active" />
+              <FontAwesomeIcon
+                icon="inbox"
+                className={`${styles.icon} ${styles.iconIsActive}`}
+              />
             </li>
             <li>
-              <FontAwesomeIcon icon="star" styleName="icon" />
+              <FontAwesomeIcon icon="star" className={styles.icon} />
             </li>
             <li>
-              <FontAwesomeIcon icon="paper-plane" styleName="icon" />
+              <FontAwesomeIcon icon="paper-plane" className={styles.icon} />
             </li>
             <li>
-              <FontAwesomeIcon icon="trash-alt" styleName="icon" />
+              <FontAwesomeIcon icon="trash-alt" className={styles.icon} />
             </li>
           </ul>
         </nav>
         <ul>
-          <li styleName="label-yellow" />
-          <li styleName="label-blue" />
-          <li styleName="label-red" />
-          <li styleName="label-green" />
+          <li className={styles.labelYellow} />
+          <li className={styles.labelBlue} />
+          <li className={styles.labelRed} />
+          <li className={styles.labelGreen} />
         </ul>
-        <div styleName="user-profile">
+        <div className={styles.userProfile}>
           <i className="fa fa-cog" />
           <i className="fa fa-sign-out" />
         </div>

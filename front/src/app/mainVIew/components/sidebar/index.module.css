@@ -48,7 +48,7 @@
   }
 }
 
-.icon-is-active {
+.iconIsActive {
   opacity: 1 !important;
 }
 
@@ -73,27 +73,27 @@
   margin: 20px 0;
 }
 
-.label-red {
+.labelRed {
   composes: label;
   composes: item-red from global;
 }
 
-.label-blue {
+.labelBlue {
   composes: label;
   composes: item-blue from global;
 }
 
-.label-yellow {
+.labelYellow {
   composes: label;
   composes: item-yellow from global;
 }
 
-.label-green {
+.labelGreen {
   composes: label;
   composes: item-green from global;
 }
 
-.user-profile {
+.userProfile {
   display: flex;
   padding-bottom: 20px;
 

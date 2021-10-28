@@ -9,7 +9,7 @@ import { LoginScreen } from "../app/login/LoginScreen";
 import { MainView } from "../app/MainView/MainView";
 
 export const AppRouter = () => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   return (
     <Router>
       <div className="h-full">

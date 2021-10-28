@@ -15,7 +15,7 @@
   justify-content: center;
 }
 
-.overlay-active {
+.overlayActive {
   composes: overlay;
   visibility: visible;
   opacity: 1;

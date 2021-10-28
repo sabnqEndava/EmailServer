@@ -4,12 +4,12 @@ import Sidebar from "./components/sidebar";
 import Inbox from "./components/inbox";
 import Message from "./components/message";
 import Overlay from "./components/overlay";
-import "./index.module.css";
+import styles from "./index.module.css";
 
 export const MainView = () => (
-  <div styleName="window" className="h-auto">
+  <div className={`h-auto ${styles.window}`}>
     {/* <Toolbar /> */}
-    <div styleName="content">
+    <div className={styles.content}>
       {/* <Overlay /> */}
       <Sidebar />
       <Inbox />

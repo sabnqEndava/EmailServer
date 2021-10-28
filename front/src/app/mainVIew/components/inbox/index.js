@@ -1,31 +1,31 @@
 import React from "react";
-import "./index.module.css";
+import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const InboxItem = ({ sender, title, content, date, labelClass }) => {
   return (
-    <li styleName="inbox-item">
-      <div styleName="inbox-sender">
-        <div styleName="sender-name">{sender}</div>
+    <li className={styles.inboxItem}>
+      <div className={styles.inboxSender}>
+        <div className={styles.senderName}>{sender}</div>
         <div>
           <FontAwesomeIcon
             icon={["fas", "paperclip"]}
-            styleName="sender-label"
+            className={styles.senderLabel}
           />
-          <span styleName="sender-date">{date}</span>
+          <span className={styles.senderDate}>{date}</span>
         </div>
       </div>
-      <div styleName="inbox-title">
+      <div className={styles.inbox - title}>
         <div className={labelClass} />
         <div>{title}</div>
       </div>
-      <p styleName="inbox-content">{content}</p>
+      <p className={styles.inboxContent}>{content}</p>
     </li>
   );
 };
 
 const Inbox = () => (
-  <ul styleName="inbox">
+  <ul className={styles.inbox}>
     <InboxItem
       sender="Jeremy Boateng"
       title="What are you doing tomorrow?"
@@ -35,7 +35,7 @@ const Inbox = () => (
     mi. Dapibus blåndit quäm. Erös risus ornåre leo årcu.
   `}
       date="Right now"
-      labelClass="item-blue"
+      labelClass={styles.itemBlue}
     />
     <InboxItem
       sender="Jeremy Boateng"
@@ -46,7 +46,7 @@ const Inbox = () => (
         mi. Dapibus blåndit quäm. Erös risus ornåre leo årcu.
   `}
       date="Yesterday, 12:42pm"
-      labelClass="item-yellow"
+      labelClass={styles.itemYellow}
     />
     <InboxItem
       sender="Marko Handanovic"
@@ -57,7 +57,7 @@ const Inbox = () => (
         keytar. Keytar fingerstache readymade four loko, fanny pack kickstarter.
       `}
       date="2 days ago, 08:32am"
-      labelClass="item-green"
+      labelClass={styles.itemGreen}
     />
     <InboxItem
       sender="Zlatan Ibrahimovic"
@@ -68,7 +68,7 @@ const Inbox = () => (
         to former expat Charlotte West.
       `}
       date="A month ago, 01:02pm"
-      labelClass="item-red"
+      labelClass={styles.itemRed}
     />
   </ul>
 );

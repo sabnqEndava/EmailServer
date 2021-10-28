@@ -3,20 +3,20 @@ import "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Toolbar = () => (
-  <div styleName="toolbar">
-    <ul styleName="actions">
-      <li styleName="item" />
-      <li styleName="item" />
-      <li styleName="item" />
+  <div className={styles.toolbar}>
+    <ul className={styles.actions}>
+      <li className={styles.item} />
+      <li className={styles.item} />
+      <li className={styles.item} />
     </ul>
-    <div styleName="search-container">
+    <div className={styles.searchContainer}>
       <input
-        styleName="search"
+        className={styles.search}
         type="search"
         defaultValue="#Swedish"
         placeholder="Type to search"
       />
-      <button styleName="searchBtn">
+      <button className={styles.searchBtn}>
         <FontAwesomeIcon icon="search" />
       </button>
     </div>

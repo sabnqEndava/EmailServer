@@ -32,11 +32,11 @@
   flex-flow: column wrap;
 }
 
-.sender-name {
+.senderName {
   @apply font-bold;
 }
 
-.sender-email {
+.senderEmail {
   @apply text-blue-500;
 }
 
