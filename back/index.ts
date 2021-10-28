@@ -1,7 +1,6 @@
 import { env } from './src/config/config';
 import  {App}  from './src/app';
 
-// const App = require('./src/app');
 
 const envVariables = env();
 
