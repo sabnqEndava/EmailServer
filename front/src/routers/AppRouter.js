@@ -6,10 +6,11 @@ import {
   Route,
 } from "react-router-dom";
 import { LoginScreen } from "../app/login/LoginScreen";
+import { SignInScreen } from "../app/login/SignInScreen";
 import { MainView } from "../app/MainView/MainView";
 
 export const AppRouter = () => {
-  const isAuthenticated = true;
+  const isAuthenticated = false;
   return (
     <Router>
       <div className="h-full">
@@ -18,12 +19,21 @@ export const AppRouter = () => {
             exact
             path="/login"
             component={() =>
-              !isAuthenticated ? <LoginScreen /> : <MainView />
+              !isAuthenticated ? <LoginScreen /> : <Redirect to="/" />
+            }
+          />
+          <Route
+            exact
+            path="/signin"
+            component={() =>
+              !isAuthenticated ? <SignInScreen /> : <Redirect to="/" />
             }
           />
           <Route
             path="/"
-            component={() => (isAuthenticated ? <MainView /> : <LoginScreen />)}
+            component={() =>
+              isAuthenticated ? <MainView /> : <Redirect to="/login" />
+            }
           />
         </Switch>
       </div>
