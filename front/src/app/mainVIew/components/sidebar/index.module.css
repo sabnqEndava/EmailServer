@@ -99,7 +99,7 @@
 
   flex-flow: column wrap;
   align-items: center;
-  i {
+  /* i {
     margin-top: 20px;
     cursor: pointer;
     transition: opacity 300ms ease-in-out;
@@ -109,5 +109,5 @@
     &:hover {
       opacity: 1;
     }
-  }
+  } */
 }

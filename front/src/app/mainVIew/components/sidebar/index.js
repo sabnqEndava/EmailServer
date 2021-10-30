@@ -32,23 +32,19 @@ class Sidebar extends Component {
             </li>
           </ul>
         </nav>
-        <ul>
-          <li className={styles.labelYellow} />
-          <li className={styles.labelBlue} />
-          <li className={styles.labelRed} />
-          <li className={styles.labelGreen} />
-        </ul>
+
         <div className={styles.userProfile}>
-          <i className="fa fa-cog" />
-          <i className="fa fa-sign-out" />
+          <FontAwesomeIcon icon="cog" className={styles.icon} />
+          <FontAwesomeIcon icon="sign-out-alt" className={styles.icon} />
         </div>
       </aside>
     );
   }
 }
 
-export default connect(null, (dispatch) => {
-  return {
-    openOverlay: () => dispatch({ type: "OPEN_OVERLAY" }),
-  };
-})(Sidebar);
+export default Sidebar;
+// export default connect(null, (dispatch) => {
+//   return {
+//     openOverlay: () => dispatch({ type: "OPEN_OVERLAY" }),
+//   };
+// })(Sidebar);
