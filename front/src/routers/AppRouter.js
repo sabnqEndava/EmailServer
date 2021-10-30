@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Redirect,
   Route,
 } from "react-router-dom";
+import { AuthContext } from "../auth/AuthContext";
 import { LoginScreen } from "../app/login/LoginScreen";
 import { SignInScreen } from "../app/login/SignInScreen";
 import { MainView } from "../app/MainView/MainView";
 
 export const AppRouter = () => {
-  const isAuthenticated = false;
+  const { user } = useContext(AuthContext);
+  const isAuthenticated = user.logged;
   return (
     <Router>
       <div className="h-full">
@@ -18,8 +20,12 @@ export const AppRouter = () => {
           <Route
             exact
             path="/login"
-            component={() =>
-              !isAuthenticated ? <LoginScreen /> : <Redirect to="/" />
+            component={(props) =>
+              !isAuthenticated ? (
+                <LoginScreen {...props} />
+              ) : (
+                <Redirect to="/" />
+              )
             }
           />
           <Route

@@ -20,13 +20,13 @@ export const SignInScreen = () => {
           <div>
             <div className="mt-6">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
-                for="email"
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
               >
                 Name
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
                 type="text"
                 placeholder="Email"
@@ -34,13 +34,13 @@ export const SignInScreen = () => {
             </div>
             <div className="mt-3">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
-                for="email"
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
               >
                 Email
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
                 type="text"
                 placeholder="Email"
@@ -48,13 +48,13 @@ export const SignInScreen = () => {
             </div>
             <div className="mt-3">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
-                for="password"
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
               >
                 Password
               </label>
               <input
-                class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 type="password"
                 placeholder="******************"
@@ -63,20 +63,20 @@ export const SignInScreen = () => {
 
             <div className="mt-3">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
-                for="password2"
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password2"
               >
                 Confirm Password
               </label>
               <input
-                class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password2"
                 type="password"
                 placeholder="******************"
               ></input>
             </div>
 
-            <button class="mt-3 bg-rosaCaliente hover:bg-pink-300 text-white font-bold py-2 px-4 rounded">
+            <button className="mt-3 bg-rosaCaliente hover:bg-pink-300 text-white font-bold py-2 px-4 rounded">
               Register
             </button>
           </div>
