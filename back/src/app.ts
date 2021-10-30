@@ -1,8 +1,8 @@
 import express from 'express';
 import { Env } from './config/config'
+import {Routes} from './routes'
 const { connect }  = require('./db')
 const cors = require("cors");
-const { testInsert, testGet, testPostEmail } = require('./controllers/users');
 
 const app = express();
 
@@ -28,9 +28,7 @@ export class App {
     })
   }
   routes(){
-    app.get("/", testInsert);
-    app.get('/users', testGet)
-    app.get('/user', testPostEmail)
+   const routes = new Routes(app)
   }
 }
 
