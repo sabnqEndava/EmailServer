@@ -35,8 +35,9 @@ function postEmail(req:any, res:any){
             user.received_mails.push(newEmail)
             user.save((err: any)=>{
                 if (err) throw Error(err);
+                socket.io.emit(`message-${req.body.receiver}`, newEmail)
+                console.log('new Email sent to:', req.body.receiver)
             })
-            socket.io.emit('message', newEmail)
             return res.status(200).json({
                 status:200,
                 response:user

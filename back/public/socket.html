@@ -11,7 +11,7 @@
     <h1>Check the console when you send an email</h1>
     <script>
         var socket = io.connect('http://localhost:4000', {forceNew:true})
-        socket.on('message', function(data){
+        socket.on('message-santiago.pena@email.com', function(data){
             console.log(data)
         })
     </script>
