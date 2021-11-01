@@ -1,9 +1,10 @@
-const { getAllEmailsByUser, postEmail } = require('./controllers/users');
+const { getAllEmailsByUser, postEmail, getAllUsers } = require('./controllers/users');
 
 export class Routes {
     constructor(app: any){
-        app.post('/user/:email', postEmail )
-        app.get('/user/:email', getAllEmailsByUser )
+        app.post('/user/:id', postEmail )
+        app.get('/user/:id', getAllEmailsByUser )
+        app.get('/', getAllUsers)
     }
 
 }

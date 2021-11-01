@@ -4,7 +4,7 @@ const Users = require("./../models/users");
 
 function getAllEmailsByUser(req: any, res:any){
     try{
-        Users.findOne({email:req.params.email},(err: any, user:any)=>{
+        Users.findOne({id:req.params.id},(err: any, user:any)=>{
             if (err) throw Error(err);
             return res.status(200).json({
                 status:200,
@@ -29,7 +29,7 @@ function postEmail(req:any, res:any){
         summary: req.body.body.substring(0,50)
     }
      try{
-        Users.findOne({email:req.params.email},(err: any, user:any)=>{
+        Users.findOne({id:req.params.id},(err: any, user:any)=>{
             if (err) throw Error(err);
             user.received_mails.push(newEmail)
             user.save((err: any)=>{
@@ -72,22 +72,22 @@ function postEmail(req:any, res:any){
 //     }
 // }
 
-// function testGet(req: any, res:any){
-//     try{
-//         Users.find((err: any, user:any)=>{
-//             if (err) throw Error(err);
-//             return res.status(200).json({
-//                 status:200,
-//                 response:user
-//             })
-//         });
-//     }catch (error){
-//         res.status(400).json({
-//             status:400,
-//             response:error
-//         });
-//     }
-// }
+function getAllUsers(req: any, res:any){
+    try{
+        Users.find((err: any, user:any)=>{
+            if (err) throw Error(err);
+            return res.status(200).json({
+                status:200,
+                response:user
+            })
+        });
+    }catch (error){
+        res.status(400).json({
+            status:400,
+            response:error
+        });
+    }
+}
 
 // function testPostEmail(req: any, res:any){
 //     try{
@@ -120,4 +120,4 @@ function postEmail(req:any, res:any){
 //     }
 // }
 
-module.exports = { getAllEmailsByUser, postEmail}
+module.exports = { getAllEmailsByUser, postEmail, getAllUsers}
