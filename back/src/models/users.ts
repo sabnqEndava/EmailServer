@@ -1,18 +1,26 @@
 
-const mongoose2 = require('mongoose')
+import { Schema, model, Model } from 'mongoose';
+import { IUser } from '../types/types';
+
 import { EmailSchema } from "./email";
-const UserSchema = new mongoose2.Schema({
+const UserSchema = new Schema({
     name: {
-        type:String,
+        type: String,
         required: true
     },
-    email:{
-        type:String,
-        required:true
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 100,
     },
     received_mails: [EmailSchema]
 })
 
-const User = mongoose2.model("User", UserSchema);
+const User: Model<IUser> = model("User", UserSchema);
 
-module.exports = User;
+export = User;
