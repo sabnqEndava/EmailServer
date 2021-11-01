@@ -1,10 +1,12 @@
 import express from 'express';
 import { Env } from './config/config'
-import {Routes} from './routes'
-const { connect }  = require('./db')
-const cors = require("cors");
+import { Routes } from './routes'
 
 const app = express();
+const { connect }  = require('./db')
+const cors = require("cors");
+const socket = require('./socket');
+
 
 export class App {
   constructor(env: Env){
@@ -16,6 +18,7 @@ export class App {
   initApp(){
     app.use(cors());
     app.use(express.json());
+    app.use(express.static('public'));
   }
 
   initDatabase(password: string, dbName: string, username: string){
@@ -23,9 +26,10 @@ export class App {
   }
 
   initServer(port:number){
-    app.listen(port, () => {
+    const server = app.listen(port, () => {
       console.log(`Listening on port ${port}`);
     })
+    socket.connectSocket(server);
   }
   routes(){
    const routes = new Routes(app)

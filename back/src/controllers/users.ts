@@ -2,6 +2,7 @@ import { EmailSchema } from "../models/email";
 import jwt from 'jsonwebtoken';
 import { Response } from 'express';
 import bcrypt from 'bcryptjs';
+const { socket } = require('../socket')
 
 import Users from './../models/users';
 import { AuthBody, CreateUserBody, CustomRequest, IUser } from "../types/types";
@@ -16,10 +17,10 @@ function createUser(req: CustomRequest<CreateUserBody>, res: Response) {
 
     user.save((err, _) => {
         if (err) {
-            return res.status(500).send({ message: err})
+            return res.status(500).send({ message: err })
         }
 
-        return res.status(201).send({ message: "User created successfully"})
+        return res.status(201).send({ message: "User created successfully" })
     })
 };
 
@@ -61,7 +62,7 @@ function logIn(req: CustomRequest<AuthBody>, res: Response) {
 
 function getAllEmailsByUser(req: any, res: any) {
     try {
-        Users.findOne({ email: req.params.email }, (err: any, user: any) => {
+        Users.findOne({ id: req.params.id }, (err: any, user: any) => {
             if (err) throw Error(err);
             return res.status(200).json({
                 status: 200,
@@ -86,12 +87,13 @@ function postEmail(req: any, res: any) {
         summary: req.body.body.substring(0, 50)
     }
     try {
-        Users.findOne({ email: req.params.email }, (err: any, user: any) => {
+        Users.findOne({ id: req.params.id }, (err: any, user: any) => {
             if (err) throw Error(err);
             user.received_mails.push(newEmail)
             user.save((err: any) => {
                 if (err) throw Error(err);
             })
+            socket.io.emit('message', newEmail)
             return res.status(200).json({
                 status: 200,
                 response: user
@@ -106,45 +108,22 @@ function postEmail(req: any, res: any) {
 }
 
 
-// function testInsert(req: any, res:any){
-//     const testUser = new Users({
-//         name: 'john doe',
-//         email: 'john.doe@mail.com',
-//     });
-
-//     try{
-//         testUser.save((err: any, user:any)=>{
-//             if (err) throw Error(err);
-//             console.log("user created");
-//             return res.status(200).json({
-//                 status:200,
-//                 response:user
-//             })
-//         });
-//     }catch (error){
-//         res.status(400).json({
-//             status:400,
-//             response:error
-//         });
-//     }
-// }
-
-// function testGet(req: any, res:any){
-//     try{
-//         Users.find((err: any, user:any)=>{
-//             if (err) throw Error(err);
-//             return res.status(200).json({
-//                 status:200,
-//                 response:user
-//             })
-//         });
-//     }catch (error){
-//         res.status(400).json({
-//             status:400,
-//             response:error
-//         });
-//     }
-// }
+function getAllUsers(req: any, res: any) {
+    try {
+        Users.find((err: any, user: any) => {
+            if (err) throw Error(err);
+            return res.status(200).json({
+                status: 200,
+                response: user
+            })
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 400,
+            response: error
+        });
+    }
+}
 
 // function testPostEmail(req: any, res:any){
 //     try{
@@ -176,9 +155,10 @@ function postEmail(req: any, res: any) {
 //         });
 //     }
 // }
-export { 
+export {
     getAllEmailsByUser,
     postEmail,
     createUser,
     logIn,
-    }
+    getAllUsers,
+}
