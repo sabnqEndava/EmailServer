@@ -7,7 +7,7 @@ function connectSocket(server:any){
     console.log("socket listening")
 }
 
-module.exports = {
+export {
     connectSocket,
     socket,
 }

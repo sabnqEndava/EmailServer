@@ -2,8 +2,7 @@ import { EmailSchema } from "../models/email";
 import jwt from 'jsonwebtoken';
 import { Response } from 'express';
 import bcrypt from 'bcryptjs';
-const { socket } = require('../socket')
-
+import { socket } from '../socket';
 import Users from './../models/users';
 import { AuthBody, CreateUserBody, CustomRequest, IUser } from "../types/types";
 import { env } from "../config/config";
