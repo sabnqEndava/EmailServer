@@ -1,4 +1,5 @@
 import { EmailSchema } from "../models/email";
+const {socket} = require('../socket')
 
 const Users = require("./../models/users");
 
@@ -35,6 +36,7 @@ function postEmail(req:any, res:any){
             user.save((err: any)=>{
                 if (err) throw Error(err);
             })
+            socket.io.emit('message', newEmail)
             return res.status(200).json({
                 status:200,
                 response:user
@@ -48,29 +50,6 @@ function postEmail(req:any, res:any){
      }
 }
 
-
-// function testInsert(req: any, res:any){
-//     const testUser = new Users({
-//         name: 'john doe',
-//         email: 'john.doe@mail.com',
-//     });
-
-//     try{
-//         testUser.save((err: any, user:any)=>{
-//             if (err) throw Error(err);
-//             console.log("user created");
-//             return res.status(200).json({
-//                 status:200,
-//                 response:user
-//             })
-//         });
-//     }catch (error){
-//         res.status(400).json({
-//             status:400,
-//             response:error
-//         });
-//     }
-// }
 
 function getAllUsers(req: any, res:any){
     try{
@@ -119,5 +98,29 @@ function getAllUsers(req: any, res:any){
 //         });
 //     }
 // }
+
+// function testInsert(req: any, res:any){
+//     const testUser = new Users({
+//         name: 'john doe',
+//         email: 'john.doe@mail.com',
+//     });
+
+//     try{
+//         testUser.save((err: any, user:any)=>{
+//             if (err) throw Error(err);
+//             console.log("user created");
+//             return res.status(200).json({
+//                 status:200,
+//                 response:user
+//             })
+//         });
+//     }catch (error){
+//         res.status(400).json({
+//             status:400,
+//             response:error
+//         });
+//     }
+// }
+
 
 module.exports = { getAllEmailsByUser, postEmail, getAllUsers}
