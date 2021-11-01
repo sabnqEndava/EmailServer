@@ -1,12 +1,7 @@
-
-// module.exports = () => ({
-//     mongo:{
-//         port: process.env.DB_NAME
-//     }
-// })
 export interface Env {
   app: {
     port: number;
+    secret: string;
   };
   mongo: {
     name: string;
@@ -16,10 +11,8 @@ export interface Env {
 }
 export const env = (): Env => ({
   app: {
-    // name: process.env.APP_NAME,
     port: Number(process.env.APP_PORT) || 3000,
-    // environment: process.env.APPLICATION_ENV,
-    // logpath: process.env.LOG_PATH,
+    secret: process.env.JWT_SECRET as string,
   },
   mongo: {
     name: process.env.DB_NAME as string,
