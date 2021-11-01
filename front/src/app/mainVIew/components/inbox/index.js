@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { mockEmails } from "../../../../mocks/email";
 const InboxItem = ({ sender, title, content, date, labelClass }) => {
   return (
     <li className={styles.inboxItem}>
@@ -26,50 +26,15 @@ const InboxItem = ({ sender, title, content, date, labelClass }) => {
 
 const Inbox = () => (
   <ul className={styles.inbox}>
-    <InboxItem
-      sender="Jeremy Boateng"
-      title="What are you doing tomorrow?"
-      content={`
-    Lörem ipsum dolör. Sit amet cönsectetur adipisicing elit sed dö eiusmod.
-    Tempör incididunt ut laböre, et dölöre magnå. Aliquå såpien sollicitudin
-    mi. Dapibus blåndit quäm. Erös risus ornåre leo årcu.
-  `}
-      date="Right now"
-      labelClass={styles.itemBlue}
-    />
-    <InboxItem
-      sender="Jeremy Boateng"
-      title="What are you doing tomorrow?"
-      content={`
-        Lörem ipsum dolör. Sit amet cönsectetur adipisicing elit sed dö eiusmod.
-        Tempör incididunt ut laböre, et dölöre magnå. Aliquå såpien sollicitudin
-        mi. Dapibus blåndit quäm. Erös risus ornåre leo årcu.
-  `}
-      date="Yesterday, 12:42pm"
-      labelClass={styles.itemYellow}
-    />
-    <InboxItem
-      sender="Marko Handanovic"
-      title="Fashion News"
-      content={`
-        Cardigan before they sold out chartreuse fashion axe, 90's leggings
-        mixtape stumptown waistcoat quinoa. Whatever bicycle rights pop-up
-        keytar. Keytar fingerstache readymade four loko, fanny pack kickstarter.
-      `}
-      date="2 days ago, 08:32am"
-      labelClass={styles.itemGreen}
-    />
-    <InboxItem
-      sender="Zlatan Ibrahimovic"
-      title="The challenge of learning Swedish"
-      content={`
-        Most Swedes speak English – which certainly helps a first-time visitor
-        in Stockholm. But it makes learning Swedish somewhat harder, according
-        to former expat Charlotte West.
-      `}
-      date="A month ago, 01:02pm"
-      labelClass={styles.itemRed}
-    />
+    {mockEmails.map(email, (index) => {
+      <InboxItem
+        sender={email.sender}
+        title={email.subject}
+        content={email.summary}
+        date="Right now"
+        labelClass={styles.itemBlue}
+      />;
+    })}
   </ul>
 );
 

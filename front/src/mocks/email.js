@@ -1,0 +1,38 @@
+export const mockEmails = [
+  {
+    id: "618001bd204fb5d1313a1383",
+    sender: "zulma.castaneda@email.com",
+    receiver: "santiago.pena@email.com",
+    subject: "First email ever!",
+    body: "Did you know? the first email ever sent was QWERTYUIOP or something like that",
+    date: "2021-10-26T03:00:29.000Z",
+    summary: '"Did you know? the first email ever sent was ...',
+  },
+  {
+    sender: "zulma.castaneda@email.com",
+    receiver: "santiago.pena@email.com",
+    subject: "Ray Tomlinson wrote the first email",
+    body: "It was sent in 1971, even before the web was invented!",
+    date: "2021-10-26T03:00:29.000Z",
+    summary: "It was sent in 1971, even before the web was ...",
+    id: "6179fc4e0db95f442e1b9d3d",
+  },
+  {
+    sender: "zulma.castaneda@email.com",
+    receiver: "santiago.pena@email.com",
+    subject: "Ray Tomlinson wrote the first email",
+    body: "It was sent in 1971, even before the web was invented!",
+    date: "2021-10-26T03:00:29.000Z",
+    summary: "It was sent in 1971, even before the web was ...",
+    id: "617ada28746cefc5c9a106d5",
+  },
+  {
+    sender: "zulma.castaneda@email.com",
+    receiver: "santiago.pena@email.com",
+    subject: "First test from POST",
+    body: "Just testing the endpoint nothing to see here",
+    date: "2021-10-29T01:42:33.057Z",
+    summary: "Just testing the endpoint nothing to see here",
+    id: "617b51893e58c06299a21355",
+  },
+];

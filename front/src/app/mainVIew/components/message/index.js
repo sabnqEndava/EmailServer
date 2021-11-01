@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { mockEmails } from "../../../../mocks/email";
+
+const email = mockEmails[0];
 
 const Message = () => (
   <div className={styles.message}>
@@ -15,7 +18,7 @@ const Message = () => (
           <div className={styles.senderName}>Jay Chung</div>
           <div>
             <span>{`To: `}</span>
-            <span className={styles.senderEmail}>wuceh14678@gmail.com</span>
+            <span className={styles.senderEmail}>{email.receiver}</span>
           </div>
         </div>
       </div>
@@ -25,27 +28,8 @@ const Message = () => (
         <FontAwesomeIcon icon={["far", "trash-alt"]} className={styles.icon} />
       </div>
     </div>
-    <div className={styles.title}>The challenge of learning Swedish</div>
-    <p>
-      Most Swedes speak English – which certainly helps a first-time visitor in
-      Stockholm. But it makes learning Swedish somewhat harder, according to
-      former expat Charlotte West.
-    </p>
-    <div className={styles.subtitle}>Newly arrived</div>
-    <p>
-      I arrived in Sweden in August 2002 armed with Prisma’s Abridged
-      English-Swedish and Swedish-English Dictionary and an eight-week intensive
-      Swedish course from the University of California at Berkeley behind me.
-      Four years later, the dog-eared dictionary had grammar notes scribbled in
-      the margins and I had become a fluent Swedish speaker, more or less.
-    </p>
-    <div className={styles.title}>Swedish Word of the Day</div>
-    <p>
-      A big part of the reason my spoken Swedish got good is that I quickly met
-      Swedish friends who were willing to help me practise. One of our
-      techniques was keeping track of our ‘Swedish Word of the Day’ on a list
-      tacked to the kitchen cupboard.
-    </p>
+    <div className={styles.title}>{email.subject}</div>
+    <p>{email.body}</p>
   </div>
 );
 
