@@ -21,20 +21,10 @@ class Sidebar extends Component {
                 className={`${styles.icon} ${styles.iconIsActive}`}
               />
             </li>
-            <li>
-              <FontAwesomeIcon icon="star" className={styles.icon} />
-            </li>
-            <li>
-              <FontAwesomeIcon icon="paper-plane" className={styles.icon} />
-            </li>
-            <li>
-              <FontAwesomeIcon icon="trash-alt" className={styles.icon} />
-            </li>
           </ul>
         </nav>
 
         <div className={styles.userProfile}>
-          <FontAwesomeIcon icon="cog" className={styles.icon} />
           <FontAwesomeIcon icon="sign-out-alt" className={styles.icon} />
         </div>
       </aside>
