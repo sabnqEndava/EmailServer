@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { mockEmails } from "../../../../mocks/email";
-const InboxItem = ({ sender, title, content, date, labelClass }) => {
+const InboxItem = ({
+  sender,
+  title,
+  content,
+  date,
+  labelClass,
+  id,
+  selectAnEmail,
+}) => {
   return (
-    <li className={styles.inboxItem}>
+    <li className={styles.inboxItem} onClick={() => selectAnEmail(id)}>
       <div className={styles.inboxSender}>
         <div className={styles.senderName}>{sender}</div>
         <div>
@@ -24,13 +31,12 @@ const InboxItem = ({ sender, title, content, date, labelClass }) => {
   );
 };
 
-const Inbox = () => {
-  const [emails, setEmails] = useState(mockEmails);
+const Inbox = (props) => {
+  const [emails, setEmails] = useState(props.emails);
 
   return (
     <ul className={styles.inbox}>
       {emails.map((email) => {
-        console.log(email.body);
         return (
           <InboxItem
             sender={email.sender}
@@ -38,6 +44,8 @@ const Inbox = () => {
             content={email.summary}
             date={new Date(email.date).toLocaleDateString()}
             labelClass={styles.itemBlue}
+            selectAnEmail={props.selectAnEmail}
+            id={email.id}
           />
         );
       })}
