@@ -37,8 +37,12 @@ export const AppRouter = () => {
           />
           <Route
             path="/"
-            component={() =>
-              isAuthenticated ? <MainView /> : <Redirect to="/login" />
+            component={(props) =>
+              isAuthenticated ? (
+                <MainView {...props} />
+              ) : (
+                <Redirect to="/login" />
+              )
             }
           />
         </Switch>

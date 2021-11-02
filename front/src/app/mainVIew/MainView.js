@@ -6,12 +6,12 @@ import Message from "./components/message";
 import Overlay from "./components/overlay";
 import styles from "./index.module.css";
 
-export const MainView = () => (
+export const MainView = (props) => (
   <div className={`h-auto ${styles.window}`}>
     {/* <Toolbar /> */}
     <div className={styles.content}>
       {/* <Overlay /> */}
-      <Sidebar />
+      <Sidebar {...props} />
       <Inbox />
       <Message />
     </div>

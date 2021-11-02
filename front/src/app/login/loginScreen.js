@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../auth/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 export const LoginScreen = ({ history }) => {
   const { dispatch } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const logIn = () => {
+  const logIn = async () => {
+    // console.log(`loginPayload`, email)
+    // console.log(`loginPayload`, password)
     dispatch({
       type: "login",
       payload: {
@@ -16,6 +20,13 @@ export const LoginScreen = ({ history }) => {
     history.replace("/");
   };
 
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
   return (
     <div className="bg-amarilloPastel h-full flex items-center ">
       <div className="p-4 bg-azulLaTiffany rounded-xl mx-auto shadow-md w-2/5">
@@ -44,6 +55,7 @@ export const LoginScreen = ({ history }) => {
                 id="email"
                 type="text"
                 placeholder="Email"
+                onChange={handleChangeEmail}
               ></input>
             </div>
             <div className="mt-3">
@@ -58,6 +70,7 @@ export const LoginScreen = ({ history }) => {
                 id="password"
                 type="password"
                 placeholder="******************"
+                onChange={handleChangePassword}
               ></input>
             </div>
             <div>
