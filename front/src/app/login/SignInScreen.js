@@ -1,7 +1,49 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
+import { signUp } from "../../api/user";
 
-export const SignInScreen = () => {
+export const SignInScreen = ({ history }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errorTextVisible, setErrorTextVisible] = useState(false);
+  const [errorText, setErrorText] = useState("");
+
+  const signIn = async () => {
+    try {
+      if (password !== passwordConfirmation) {
+        setErrorText("Password and confirmation dont coincide");
+        setErrorTextVisible(true);
+        return;
+      }
+      const signUpResponse = await signUp({
+        name,
+        email,
+        password,
+        passwordConfirmation,
+      });
+      if (signUpResponse.status === 201) {
+        history.push("/login");
+      }
+    } catch (error) {
+      setErrorText("Sign up attempt failed");
+      setErrorTextVisible(true);
+    }
+  };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const handlePasswordConfirmationChange = (event) => {
+    setPasswordConfirmation(event.target.value);
+  };
   return (
     <div className="bg-amarilloPastel h-full flex items-center ">
       <div className="p-4 bg-azulLaTiffany rounded-xl mx-auto shadow-md w-2/5">
@@ -30,6 +72,7 @@ export const SignInScreen = () => {
                 id="email"
                 type="text"
                 placeholder="Email"
+                onChange={handleNameChange}
               ></input>
             </div>
             <div className="mt-3">
@@ -44,6 +87,7 @@ export const SignInScreen = () => {
                 id="email"
                 type="text"
                 placeholder="Email"
+                onChange={handleEmailChange}
               ></input>
             </div>
             <div className="mt-3">
@@ -58,6 +102,7 @@ export const SignInScreen = () => {
                 id="password"
                 type="password"
                 placeholder="******************"
+                onChange={handlePasswordChange}
               ></input>
             </div>
 
@@ -73,10 +118,20 @@ export const SignInScreen = () => {
                 id="password2"
                 type="password"
                 placeholder="******************"
+                onChange={handlePasswordConfirmationChange}
               ></input>
             </div>
-
-            <button className="mt-3 bg-rosaCaliente hover:bg-pink-300 text-white font-bold py-2 px-4 rounded">
+            {errorTextVisible && (
+              <div>
+                <p className="mt-3 font-bold text-sm text-red-500 hover:text-red-800">
+                  {errorText}
+                </p>
+              </div>
+            )}
+            <button
+              className="mt-3 bg-rosaCaliente hover:bg-pink-300 text-white font-bold py-2 px-4 rounded"
+              onClick={signIn}
+            >
               Register
             </button>
           </div>

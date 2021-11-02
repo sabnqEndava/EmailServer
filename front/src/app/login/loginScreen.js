@@ -2,22 +2,33 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../auth/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { logInApi } from "../../api/user";
 
 export const LoginScreen = ({ history }) => {
   const { dispatch } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorTextVisible, setErrorTextVisible] = useState(false);
 
   const logIn = async () => {
-    // console.log(`loginPayload`, email)
-    // console.log(`loginPayload`, password)
-    dispatch({
-      type: "login",
-      payload: {
-        name: "Zulma",
-      },
-    });
-    history.replace("/");
+    try {
+      const signInResponse = await logInApi({
+        email,
+        password,
+      });
+      dispatch({
+        type: "login",
+        payload: {
+          name: signInResponse.data.name,
+          email: signInResponse.data.email,
+          accessToken: signInResponse.data.accessToken,
+          id: signInResponse.data.id,
+        },
+      });
+      history.replace("/");
+    } catch (error) {
+      setErrorTextVisible(true);
+    }
   };
 
   const handleChangeEmail = (event) => {
@@ -81,6 +92,13 @@ export const LoginScreen = ({ history }) => {
                 No tenés account?
               </Link>
             </div>
+            {errorTextVisible && (
+              <div>
+                <p className="mt-3 font-bold text-sm text-red-500 hover:text-red-800">
+                  Log in attempt failed
+                </p>
+              </div>
+            )}
             <button
               className="bg-rosaCaliente hover:bg-pink-300 text-white font-bold py-2 w-full rounded"
               onClick={logIn}

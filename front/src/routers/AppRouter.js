@@ -31,8 +31,12 @@ export const AppRouter = () => {
           <Route
             exact
             path="/signin"
-            component={() =>
-              !isAuthenticated ? <SignInScreen /> : <Redirect to="/" />
+            component={(props) =>
+              !isAuthenticated ? (
+                <SignInScreen {...props} />
+              ) : (
+                <Redirect to="/" />
+              )
             }
           />
           <Route
