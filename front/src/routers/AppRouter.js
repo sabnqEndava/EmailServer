@@ -8,7 +8,7 @@ import {
 import { AuthContext } from "../auth/AuthContext";
 import { LoginScreen } from "../app/login/LoginScreen";
 import { SignInScreen } from "../app/login/SignInScreen";
-import { MainView } from "../app/MainView/MainView";
+import { MainView } from "../app/mainView/MainView";
 
 export const AppRouter = () => {
   const { user } = useContext(AuthContext);
