@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { mockEmails } from "../../../../mocks/email";
@@ -24,18 +24,25 @@ const InboxItem = ({ sender, title, content, date, labelClass }) => {
   );
 };
 
-const Inbox = () => (
-  <ul className={styles.inbox}>
-    {mockEmails.map(email, (index) => {
-      <InboxItem
-        sender={email.sender}
-        title={email.subject}
-        content={email.summary}
-        date="Right now"
-        labelClass={styles.itemBlue}
-      />;
-    })}
-  </ul>
-);
+const Inbox = () => {
+  const [emails, setEmails] = useState(mockEmails);
+
+  return (
+    <ul className={styles.inbox}>
+      {emails.map((email) => {
+        console.log(email.body);
+        return (
+          <InboxItem
+            sender={email.sender}
+            title={email.subject}
+            content={email.summary}
+            date={new Date(email.date).toLocaleDateString()}
+            labelClass={styles.itemBlue}
+          />
+        );
+      })}
+    </ul>
+  );
+};
 
 export default Inbox;
