@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux'
-import overlay from './overlay'
+import { createContext } from "react";
 
-export default combineReducers({ overlay })
+export const OverlayContext = createContext();

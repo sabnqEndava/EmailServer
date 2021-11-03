@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../../auth/AuthContext";
+import { OverlayContext } from "../../../../redux/reducer/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./index.module.css";
 
 const Sidebar = ({ history }) => {
   const { dispatch } = useContext(AuthContext);
+  const { dispatchOverlay } = useContext(OverlayContext);
 
   const signOut = () => {
     dispatch({
@@ -13,10 +15,16 @@ const Sidebar = ({ history }) => {
     history.replace("/login");
   };
 
+  const activateOverlay = () => {
+    dispatchOverlay({
+      type: "OPEN_OVERLAY",
+    });
+  };
+
   return (
     <aside className={styles.sidebar}>
       <nav>
-        <button className={styles.compose} onClick={() => {}}>
+        <button className={styles.compose} onClick={activateOverlay}>
           <FontAwesomeIcon icon="pencil-alt" />
         </button>
         <ul className={styles.categories}>
