@@ -10,11 +10,11 @@ const Message = (props) => {
         <div className={styles.from}>
           <img
             className={styles.image}
-            src="https://avatars3.githubusercontent.com/u/6926451?s=460&v=4"
+            src="https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236_1280.png"
             alt="img"
           />
           <div className={styles.sender}>
-            <div className={styles.senderName}>Jay Chung</div>
+            <div className={styles.senderName}>From:{email.sender}</div>
             <div>
               <span>{`To: `}</span>
               <span className={styles.senderEmail}>{email.receiver}</span>

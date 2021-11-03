@@ -32,11 +32,9 @@ const InboxItem = ({
 };
 
 const Inbox = (props) => {
-  const [emails, setEmails] = useState(props.emails);
-
   return (
     <ul className={styles.inbox}>
-      {emails.map((email) => {
+      {props.emails.map((email) => {
         return (
           <InboxItem
             sender={email.sender}
