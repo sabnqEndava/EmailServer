@@ -33,7 +33,7 @@ const InboxItem = ({
 
 const Inbox = (props) => {
   return (
-    <ul className={styles.inbox}>
+    <ul className={`${styles.inbox} overflow-y-scroll`}>
       {props.emails.map((email) => {
         return (
           <InboxItem
@@ -43,7 +43,7 @@ const Inbox = (props) => {
             date={new Date(email.date).toLocaleDateString()}
             labelClass={styles.itemBlue}
             selectAnEmail={props.selectAnEmail}
-            id={email.id}
+            id={email._id}
           />
         );
       })}

@@ -4,6 +4,7 @@ import { authReducer } from "./auth/authReducer";
 import overlayReducer from "./redux/reducer/overlay";
 import { OverlayContext } from "./redux/reducer/index";
 import { AppRouter } from "./routers/AppRouter";
+import { Overlay } from "./app/mainView/components/overlay/index";
 
 const init = () => {
   return JSON.parse(localStorage.getItem("user")) || { logged: false };
@@ -21,6 +22,7 @@ export const App = () => {
     <OverlayContext.Provider value={{ value, dispatchOverlay }}>
       <AuthContext.Provider value={{ user, dispatch }}>
         <AppRouter />
+        <Overlay />
       </AuthContext.Provider>
     </OverlayContext.Provider>
   );
