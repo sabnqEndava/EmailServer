@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from "react";
 import { AuthContext } from "./auth/AuthContext";
 import { authReducer } from "./auth/authReducer";
+import overlayReducer from "./redux/reducer/overlay";
+import { OverlayContext } from "./redux/reducer/index";
 import { AppRouter } from "./routers/AppRouter";
 
 const init = () => {
@@ -9,14 +11,17 @@ const init = () => {
 
 export const App = () => {
   const [user, dispatch] = useReducer(authReducer, {}, init);
+  const [value, dispatchOverlay] = useReducer(overlayReducer, false);
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user, dispatch }}>
-      <AppRouter />
-    </AuthContext.Provider>
+    <OverlayContext.Provider value={{ value, dispatchOverlay }}>
+      <AuthContext.Provider value={{ user, dispatch }}>
+        <AppRouter />
+      </AuthContext.Provider>
+    </OverlayContext.Provider>
   );
 };

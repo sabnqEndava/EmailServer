@@ -4,7 +4,7 @@ import Sidebar from "./components/sidebar";
 import Inbox from "./components/inbox";
 import Message from "./components/message";
 import io from "socket.io-client";
-// import { Overlay } from "./components/overlay";
+import { Overlay } from "./components/overlay";
 import styles from "./index.module.css";
 import { mockEmails } from "../../mocks/email";
 import { AuthContext } from "../../auth/AuthContext";
@@ -39,7 +39,7 @@ export const MainView = (props) => {
     <div className={`h-auto ${styles.window}`}>
       {/* <Toolbar /> */}
       <div className={styles.content}>
-        {/* <Overlay /> */}
+        <Overlay />
         <Sidebar {...props} />
         <Inbox emails={emails} selectAnEmail={selectAnEmail} />
         <Message email={selectedEmail} />
