@@ -61,7 +61,7 @@ function logIn(req: CustomRequest<AuthBody>, res: Response) {
 
 function getAllEmailsByUser(req: any, res: any) {
     try {
-        Users.findOne({ id: req.params.id }, (err: any, user: any) => {
+        Users.findOne({ _id: req.params.id }, (err: any, user: any) => {
             if (err) throw Error(err);
             return res.status(200).json({
                 status: 200,
